@@ -14,4 +14,5 @@ ENV MONGO_PASSWORD=passwordPlaceholder
 
 EXPOSE 3000
 
+
 CMD [ "npm", "start" ]
