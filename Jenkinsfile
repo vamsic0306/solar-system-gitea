@@ -35,6 +35,7 @@ pipeline {
                 stage('OWASP Dependency Check') {
                     steps {
                         sh '''
+                            dependencyCheck additionalArguments: '--format HTML', odcInstallation: 'Dependency-Check'
                             dependency-check \
                             --scan ./ \
                             --outdir ./ \
