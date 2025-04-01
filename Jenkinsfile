@@ -40,6 +40,8 @@ pipeline {
                             --format \'ALL\' 
                             --disableYarnAudit \
                             --prettyPrint''', odcInstallation: 'OWASP-DepCheck-10'
+
+                        publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, icon: '', keepAll: true, reportDir: './', reportFiles: 'dependency-check-report.html', reportName: 'dependecy check html report', reportTitles: '', useWrapperFileDirectly: true])
                     }
                 }
             }
