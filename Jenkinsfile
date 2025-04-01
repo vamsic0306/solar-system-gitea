@@ -61,6 +61,12 @@ pipeline {
                         
                     }
                 }
+                stage ("coverage") {
+                    steps {
+                        withCredentials([usernamePassword(credentialsId: 'mango_useranme', passwordVariable: '1234567890fc', usernameVariable: 'mango_username')]) {
+                        sh 'npm run coverage'
+                    }
+                }
             }
         }
     }
