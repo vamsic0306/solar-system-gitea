@@ -5,6 +5,10 @@ pipeline {
         nodejs 'NodeJS'  // Ensure "NodeJS" is configured in Jenkins Global Tools
     }
 
+    environment {
+  MANGODB_USERNAME = "1234567890"
+}
+
     stages {
         stage('Hello World') {
             steps {
@@ -33,8 +37,10 @@ pipeline {
                 }
                 stage ("unit tstiing") {
                     steps {
+                        withCredentials([usernamePassword(credentialsId: 'mango_useranme', passwordVariable: '1234567890fc', usernameVariable: 'mango_username')]) {
                         sh 'npm test'
                     }
+                    junit allowEmptyResults: true, keepProperties: true, testResults: 'dependency-check-junit.xml'
                 }
                 
                 stage('OWASP Dependency Check') {
