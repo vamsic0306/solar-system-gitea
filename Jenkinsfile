@@ -31,6 +31,11 @@ pipeline {
                         }
                     }
                 }
+                stage ("unit tstiing") {
+                    steps {
+                        sh 'npm test'
+                    }
+                }
                 
                 stage('OWASP Dependency Check') {
                     steps {
